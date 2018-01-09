@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<link rel="stylesheet" href="css/dafeiji.min.css" />
+		<script src="js/dest/base.js"></script>
+		<script src="js/dest/common.js"></script>
+		<script src="js/dest/gameEngine.js"></script>
+		<script src="js/dest/myPlane.js"></script>
+		<script src="js/dest/bullet.js"></script>
+		<script src="js/dest/enemy.js"></script>
+		<script src="js/dest/ajax.js"></script>
+		
+		<script>
+			onload = ()=>{
+				
+				//3d游戏： Unity3D 
+				//2d游戏： cocos2dx, cocosCreator
+				
+				//打飞机游戏
+				//游戏引擎： 对象
+				//我的飞机： 对象
+				//子弹： 构造函数
+				//敌机： 构造函数
+				
+				
+				var ul = document.getElementById("list");
+				var ali = ul.getElementsByTagName("li");
+				
+				for (var i=0; i<ali.length; i++) {
+					ali[i].onclick = function(){
+						//把ul移除
+						ul.parentNode.removeChild(ul);
+						
+						//子弹的发射时间间隔
+						myPlane.fireInterval = this.value-0;
+						
+						//初始化并开始游戏
+						gameEngine.init().start();
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main" >
+			<ul id="list">
+				<li value="1000">超级困难</li>
+				<li value="600">非常困难</li>
+				<li value="300">比较困难</li>
+				<li value="100">春哥附体</li>
+			</ul>
+		</div>
+	</body>
+</html>

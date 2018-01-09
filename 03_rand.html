@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="js/dest/ajax.js"></script>
+		<script>
+			
+			onload = function(){		
+				var ul = document.getElementById("list");		
+				ajax({
+					url: "http://60.205.181.47/myPHPCode4/getRank.php",
+					data:{},
+					success: function(data){
+						console.log(data);
+						
+						var arr = JSON.parse(data);
+						
+						for (var i=0; i<arr.length; i++) {
+							var obj = arr[i];
+							
+							var li = document.createElement("li");
+							ul.appendChild(li);
+							li.innerHTML = i+1 + ". [" + obj.name + "] : " + obj.score;
+						}
+					}
+				})
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h1> 飞机大战排行榜 </h1>
+		<ul id="list">
+			
+		</ul>
+	</body>
+</html>
